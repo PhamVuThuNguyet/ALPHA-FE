@@ -1,9 +1,9 @@
 import './App.css';
-import Header from './components/Header/Header';
+import SideBar from './components/layouts/header/SideBar';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <SideBar/>
     </div>
   );
 }

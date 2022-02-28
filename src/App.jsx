@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import SideBar from './components/layouts/header/SideBar';
 function App() {

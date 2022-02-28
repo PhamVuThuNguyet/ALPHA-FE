@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-import Map from '../src/components/map/Map';
-
+import SideBar from './components/layouts/header/SideBar';
 function App() {
   return (
     <div className="App">
-      <Map/>
+      <SideBar/>
     </div>
   );
 }

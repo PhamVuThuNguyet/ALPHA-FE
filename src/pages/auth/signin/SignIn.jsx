@@ -1,11 +1,11 @@
 import React from "react";
 import SignInForm from "../../../components/signin/loginForm";
-function  SignIn() {
-    return (
-      <div>
-        <SignInForm/>
-      </div>
-); 
+function SignIn() {
+  return (
+    <div>
+      <SignInForm />
+    </div>
+  );
 }
 
 export default SignIn;

@@ -49,8 +49,7 @@ function  SignInForm() {
               </form>
             </div>
         </div>
-      </div>
-); 
+  );
 }
 
 export default SignInForm;

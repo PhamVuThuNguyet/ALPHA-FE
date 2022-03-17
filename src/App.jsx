@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import SignInForm from './components/signin/loginForm';
+import SideBar from './components/layouts/header/SideBar';
+import SignUp from './pages/auth/signUp/SignUp';
+import Result from './pages/result';
+
 function App() {
   return (
     <div className="App">
-      <SignInForm/>
+      <Result/>
     </div>
   );
 }

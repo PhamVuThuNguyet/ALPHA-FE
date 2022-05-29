@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "../../components/layouts/header/SideBar";
+import SideBar from "../../components/layouts/sidebar/SideBar";
 function Result() {
   return (
     <div>
@@ -13,7 +13,7 @@ function Result() {
           <div className="relative pt-1 my-16">
             <div className="flex mb-2 items-center justify-between">
               <div>
-                <span class="text-sm font-semibold inline-block py-1 uppercase rounded-full">
+                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
                   Disease 1
                 </span>
               </div>
@@ -31,7 +31,7 @@ function Result() {
           <div className="relative pt-1 my-16">
             <div className="flex mb-2 items-center justify-between">
               <div>
-                <span class="text-sm font-semibold inline-block py-1 uppercase rounded-full">
+                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
                   Disease 1
                 </span>
               </div>
@@ -49,7 +49,7 @@ function Result() {
           <div className="relative pt-1 my-16">
             <div className="flex mb-2 items-center justify-between">
               <div>
-                <span class="text-sm font-semibold inline-block py-1 uppercase rounded-full">
+                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
                   Disease 1
                 </span>
               </div>
@@ -71,7 +71,7 @@ function Result() {
             <h2 className="text-xl text-[#36BD8C] font-sans text-left">Doctor For You:</h2>
             <div className="flex mb-2 items-center justify-between mt-10">
               <div>
-                <span class="text-xs text-[#808288] font-sans inline-block py-1 uppercase rounded-full">
+                <span className="text-xs text-[#808288] font-sans inline-block py-1 uppercase rounded-full">
                   Doctor name / Location
                 </span>
               </div>

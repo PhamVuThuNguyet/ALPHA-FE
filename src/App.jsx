@@ -1,7 +1,11 @@
+import React from 'react';
 import './App.css';
-import SideBar from './components/layouts/header/SideBar';
+
+import SideBar from './components/layouts/sidebar/SideBar';
 import SignUp from './pages/auth/signUp/SignUp';
+import SignUpForm from './pages/auth/signUp/SignUp'
 import Result from './pages/result';
+
 import Doctor from './pages/doctor';
 function App() {
   return (

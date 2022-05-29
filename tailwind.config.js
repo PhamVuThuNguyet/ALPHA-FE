@@ -1,13 +1,13 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Poppins']
-      }
+    content: [
+        "./src/**/*.{js,jsx,ts,tsx}",
+    ],
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Poppins']
+            }
+        },
     },
-  },
-  plugins: [],
+    plugins: [],
 }

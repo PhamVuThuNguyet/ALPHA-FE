@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import SideBar from "../../components/layouts/header/SideBar";
+import SideBar from "../../components/layouts/sidebar/SideBar";
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker';

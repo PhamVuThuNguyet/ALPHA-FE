@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Calendar from 'react-calendar';
 
 import SideBar from "../../components/layouts/sidebar/SideBar";
 import DatePicker from "react-datepicker";
@@ -121,10 +122,11 @@ function Dashboard() {
                     <div className="flex flex-col">
                         <h2 className="text-xl text-[#36BD8C] font-sans ml-20 mt-20">Nearest Treatment</h2>
                         <div className="flex flex-row ml-20 mt-10">
-                            <h3 className="text-sm font-sans font-bold">January 2022</h3>
+                            {/* <h3 className="text-sm font-sans font-bold">January 2022</h3>
                             <button className="ml-5">
                                 <img src="./assets/img/selectDate_button.svg" />
-                            </button>
+                            </button> */}
+                            <Calendar />
                         </div>
                         
                     </div>  

@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SideBar from "../../components/layouts/sidebar/SideBar";
+import { RouterConfig } from "../../config/routerConfig";
 function Result() {
   return (
     <div>
@@ -82,7 +84,7 @@ function Result() {
               </div>
             </div>
           </div>
-
+        <Link to={RouterConfig.appointment}>
           <div className="grid grid-cols-12 gap-2 mb-10" style={{ alignItems: 'center' }}>
             <div className="col-span-2 ml-8">
               <img className="" alt="" src="./assets/img/photo.png" />
@@ -238,7 +240,7 @@ function Result() {
               </div>
             </div>
           </div>
-
+        </Link>
         </div>
       </div>
 

@@ -13,7 +13,7 @@ function Chat(){
                                     <div className={styles["msg-img"]}>
                                         <div className={styles["contact-img"]}>
                                             <a href="#">
-                                                <img src="avatar-6.dc44eabf.jpg" alt="" />
+                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -37,7 +37,7 @@ function Chat(){
                                     <div className={styles["msg-img"]}>
                                         <div className={styles["contact-img"]}>
                                             <a href="#">
-                                                <img src="avatar-6.dc44eabf.jpg" alt="" />
+                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@ function Chat(){
                                     <div className={styles["msg-img"]}>
                                         <div className={styles["contact-img"]}>
                                             <a href="#">
-                                                <img src="avatar-6.dc44eabf.jpg" alt="" />
+                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@ function Chat(){
                                     <div className={styles["msg-img"]}>
                                         <div className={styles["contact-img"]}>
                                             <a href="#">
-                                                <img src="avatar-6.dc44eabf.jpg" alt="" />
+                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
                                             </a>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@ function Chat(){
                                     </div>
                                     <div className={styles["contact-img"]}>
                                         <a href="#">
-                                            <img src="avatar-6.dc44eabf.jpg" alt="" />
+                                            <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
                                         </a>
                                     </div>
                                 </div>

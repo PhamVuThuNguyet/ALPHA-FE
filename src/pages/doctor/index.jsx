@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import SideBar from "../../components/layouts/sidebar/SideBar";
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 function Doctor() {
     return (
         <div>
@@ -119,49 +117,49 @@ function Doctor() {
                     </div>
                     <div>
                         <h2 className="text-left text-xl text-[#36BD8C] font-sans pl-24 mt-20">Popular searches</h2>
-                        <div className="flex flex-row overflow-x-auto">
+                        <div className="flex flex-row overflow-x-auto ml-24">
                            
                             <div className="flex flex-col ml-20 mt-14 items-center bg-white rounder-2xl ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center ">California Hospital Medical Center</h3>
                             </div>
                             <div className="flex flex-col ml-20 mt-14 items-center ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center">California Hospital Medical Center</h3>
                             </div>
                             <div className="flex flex-col ml-20 mt-14 items-center ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center">California Hospital Medical Center</h3>
                             </div>
                             <div className="flex flex-col ml-20 mt-14 items-center ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center">California Hospital Medical Center</h3>
                             </div>
                             <div className="flex flex-col ml-20 mt-14 items-center ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center">California Hospital Medical Center</h3>
                             </div>
                             <div className="flex flex-col ml-20 mt-14 items-center ">
                                 <img src="./assets/img/photo.png" className="w-20"/>
                                 <h3 className="text-sm font-sans font-bold mt-2">Dr.Isbella</h3>
                                 <h3 className="text-xs font-san text-[#888C96] mt-1">Surgeon</h3>
                                 <img src="./assets/img/line.png" className="mt-6"/>
-                                <h3 className="text-xs font-san text-[#888C96] mt-4">California Hospital Medical Center</h3>
+                                <h3 className="text-xs font-san text-[#888C96] w-28 text-center">California Hospital Medical Center</h3>
                             </div>
                         </div>
                     </div>

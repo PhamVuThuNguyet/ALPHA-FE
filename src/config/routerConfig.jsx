@@ -2,6 +2,7 @@ export const RouterConfig = {
     result: "/",
     dashboard: "/dashboard",
     doctor: "/doctor",
+    chat:"/chat",
     demo: {
         home: "/demo",
         autosugest: {

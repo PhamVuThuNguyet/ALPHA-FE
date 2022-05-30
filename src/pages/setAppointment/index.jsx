@@ -131,20 +131,20 @@ function SetAppointment() {
                             <div className="flex flex-row">
                                 <div className="flex flex-col mt-10">
                                     <h3 className="text-sm text-[#36BD8C] font-sans">Appointment Day</h3>
-                                    <div className="relative ml-24 mt-5">
-                                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                    <div className=" mt-5 flex flex-row">
+                                        <div className="flex inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                             <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/day_icon.svg"/>
                                         </div>
                                         <DatePicker className="bg-gray-50 w-1 border border-[#36BD8C] text-gray-900 sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" selected={startDate} onChange={(date: Date) => setStartDate(date)} />                                    
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-10">
-                                    <h3 className="text-sm text-[#36BD8C] font-sans">Appointed Time</h3>
+                                    <h3 className="text-sm text-[#36BD8C] font-sans ml-36">Appointed Time</h3>
                                     <div className="relative ml-24 mt-5">
                                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                             <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/clock_icon.svg"></img>
                                         </div>
-                                        <TimePicker onChange={onChange} value={value} />                                   
+                                        <TimePicker className="w-1 border border-[#36BD8C] text-sm rounded-xl w-full h-12 pl-10 p-2.5" placeholder="Select time" onChange={onChange} value={value} />                                   
                                     </div>
                                 </div>
                             </div>

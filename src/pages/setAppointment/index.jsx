@@ -4,8 +4,40 @@ import SideBar from "../../components/layouts/sidebar/SideBar";
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import TimePicker from 'react-time-picker';
-
+import axiosClient from "../../axiosClient";
 import "react-datepicker/dist/react-datepicker.css";
+
+const handleSubmit = event => {
+    event.preventDefault();
+
+    const target = event.target;
+
+    // const doctor = localStorage.getItem('id');
+
+    const timeStamp = `${target.date.value} ${target.time.value}:00`;
+
+    const date = new Date(timeStamp);
+
+    const appointmentAt = date.getTime()
+
+    const postInfo = {
+        doctor: "6290efe4f4c54fb3a5ebdb41",
+        appointmentAt: appointmentAt
+    }
+
+    console.log(postInfo);
+
+    axiosClient.post(`/appointment`, postInfo)
+        .then(res => {
+        console.log(res);
+        console.log(res.data);
+        if(res.status === 200) {
+            console.log(res.data)
+            alert("Appointment created!");
+        }
+    })
+}
+
 function SetAppointment() {
     const [startDate, setStartDate] = useState(new Date());
     const [value, onChange] = useState('10:00');
@@ -17,7 +49,7 @@ function SetAppointment() {
                     <h2 className="text-xl text-[#36BD8C] font-sans">Your Treatment</h2>
                     <div className="flex mt-10 items-center">
                         <h3 className="text-[#888C96]">26 Aug 2019</h3>
-                        <div className="ml-5"><img src="./assets/img/line.png" /></div>
+                        <div className="ml-5"><img src="./assets/img/line.png" alt=""/></div>
                     </div>
                     <div className="mt-5 bg-white rounded-3xl h-64 w-2/3 gap-2 mb-10">
                         <div className="flex flex-row">
@@ -46,7 +78,7 @@ function SetAppointment() {
                         <div className="float-right flex flex-row items-center gap-2 mt-4 mx-4">
                             <a href="#" className="text-sm font-sans text-[#36BD8C] font-bold">See Details</a>
                             <div>
-                                <img src="./assets/img/eye.png" />
+                                <img src="./assets/img/eye.png" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -77,13 +109,13 @@ function SetAppointment() {
                         <div className="float-right flex flex-row items-center gap-2 mt-4 mx-4">
                             <a href="#" className="text-sm font-sans text-[#36BD8C] font-bold">See Details</a>
                             <div>
-                                <img src="./assets/img/eye.png" />
+                                <img src="./assets/img/eye.png" alt=""/>
                             </div>
                         </div>
                     </div>
                     <div className="flex mt-5 items-center mb-5">
                         <h3 className="text-[#888C96]">26 Aug 2019</h3>
-                        <div className="ml-5"><img src="./assets/img/line.png" /></div>
+                        <div className="ml-5"><img src="./assets/img/line.png" alt=""/></div>
                     </div>
                     <div className=" bg-white rounded-3xl h-64 w-2/3 gap-2 mb-10">
                         <div className="flex flex-row">
@@ -112,7 +144,7 @@ function SetAppointment() {
                         <div className="float-right flex flex-row items-center gap-2 mt-4 mx-4">
                             <a href="#" className="text-sm font-sans text-[#36BD8C] font-bold">See Details</a>
                             <div>
-                                <img src="./assets/img/eye.png" />
+                                <img src="./assets/img/eye.png" alt=""/>
                             </div>
                         </div>
                     </div>
@@ -121,37 +153,49 @@ function SetAppointment() {
                     <h2 className="text-xl text-[#36BD8C] font-sans text-left pl-14 mt-20">Your Doctor:</h2>
                     <div className="flex flex-row">
                         <div className="flex flex-col mt-16 ml-28 gap-y-4">
-                            <img className="w-20" src="./assets/img/photo.png" />
+                            <img className="w-20" src="./assets/img/photo.png" alt=""/>
                             <div className="">
                                 <h3 className="text-sm font-sans font-bold">Dr. Issabella</h3>
                                 <h3 className="text-xs text-[#888C96] font-sans">Therapist</h3>
                             </div>
                         </div>
+                        <form onSubmit={handleSubmit} action="">
                         <div className="flex flex-col">
                             <div className="flex flex-row">
                                 <div className="flex flex-col mt-10">
-                                    <h3 className="text-sm text-[#36BD8C] font-sans">Appointment Day</h3>
+                                    <label htmlFor="date" className="text-sm text-[#36BD8C] font-sans">Appointment Day</label>
                                     <div className="relative ml-24 mt-5">
                                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                            <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/day_icon.svg"/>
+                                            <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/day_icon.svg" alt=""/>
                                         </div>
-                                        <DatePicker className="bg-gray-50 w-1 border border-[#36BD8C] text-gray-900 sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" selected={startDate} onChange={(date: Date) => setStartDate(date)} />                                    
+                                        <DatePicker
+                                        id="date"
+                                        name="date"
+                                        wrapperClassName="datePicker"
+                                        className="bg-gray-50 border border-[#36BD8C] text-white sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" selected={startDate} onChange={(date: Date) => setStartDate(date)} />                                    
                                     </div>
                                 </div>
-                                <div className="flex flex-col mt-10">
-                                    <h3 className="text-sm text-[#36BD8C] font-sans">Appointed Time</h3>
-                                    <div className="relative ml-24 mt-5">
-                                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                            <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/clock_icon.svg"></img>
-                                        </div>
-                                        <TimePicker onChange={onChange} value={value} />                                   
+                                <div className="flex ml-20 flex-col mt-10">
+                                    <label htmlFor="time" className="text-sm text-[#36BD8C] font-sans">Appointed Time</label>
+                                    <div className="flex mt-5">
+                                        {/* <div className="flex inset-y-0 items-center pl-3 pointer-events-none">
+                                            <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/clock_icon.svg" alt=""></img>
+                                        </div> */}
+                                        <TimePicker
+                                        id="time"
+                                        name="time"
+                                        className="bg-gray-50 border border-[#36BD8C] text-white sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+                                        onChange={onChange} value={value} />                                   
                                     </div>
                                 </div>
                             </div>
+                                <div className="flex flex-row justify-end">
+                                    <button className="px-5 py-2 mt-5 w-50 text-lg text-white bg-[#36BD8C] rounded-2xl hover:bg-[#6cb198]" type="submit" formMethod="post">Confirm</button>
+                                </div>
                             <div >
-
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import axiosClient from "../../../axiosClient";
+import "../../../App.css";
 
 function handleSubmit(event) {
 
@@ -19,9 +20,11 @@ function handleSubmit(event) {
         if(res.status === 200) {
           localStorage.setItem('access_token', res.data.accessToken);
           localStorage.setItem('refresh_token', res.data.refreshToken);
+          localStorage.setItem('id', res.data.info["_id"]);
 
           console.log(`access token: ${localStorage.getItem('access_token')} \n
-                      refresh token: ${localStorage.getItem('refresh_token')}`);
+                      refresh token: ${localStorage.getItem('refresh_token')} \n
+                      id: ${localStorage.getItem('id')}`);
         }
       })
 }

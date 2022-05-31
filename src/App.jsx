@@ -24,6 +24,7 @@ function App() {
           <Route exact path={RouterConfig.result} element={<Result />} />
           <Route exact path={RouterConfig.dashboard} element={<Dashboard />} />
           <Route exact path={RouterConfig.doctor} element={<Doctor />} />
+          <Route exact path={RouterConfig.appointment} element={<SetAppointment />} />
           <Route exact path={RouterConfig.chat} element={<Chat />} />
         </Routes>
     </Router>

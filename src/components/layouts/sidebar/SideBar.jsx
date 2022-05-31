@@ -22,13 +22,14 @@ function SideBar() {
           <div className="text-white pt-2">Doctor</div>
         </div>
       </Link>
-      <div className="flex flex-col items-center justify-center  py-7">
-        <div>
-          <img src="./assets/img/contact.svg" />
+      <Link to={RouterConfig.chat}>
+        <div className="flex flex-col items-center justify-center  py-7">
+          <div>
+            <img src="./assets/img/contact.svg" />
+          </div>
+          <div className="text-white pt-2">Contact</div>
         </div>
-        <div className="text-white pt-2">Contact</div>
-      </div>
-
+      </Link>
       <div className="flex flex-col items-center justify-center  py-7">
         <div>
           <img src="./assets/img/tracker.svg" />

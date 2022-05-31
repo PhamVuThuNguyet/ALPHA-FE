@@ -39,32 +39,46 @@ function Dashboard() {
                             <img className="mt-10 w-24" alt="" src="./assets/img/photo.png" />
                         </div>
                         <div className="mt-6 text-center">
-                            <h3 className="text-xs font-sans font-bold">Isbella Christ</h3>
+                            <h3 className="text-xs font-sans font-bold">
+                                {
+                                    userData.firstName + " " + userData.lastName
+                                }
+                            </h3>
                             <h3 className="text-xs text-[#888C96]">{getAge(userData.dateOfBirth)} years, California</h3>
                         </div>
                     </div>
                     <div className="flex flex-row mt-10 justify-between">
                         <div className="flex flex-col ml-24">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Blood</h3>
-                            <h3 className="text-sm font-bold">{
+                            <h3 className="text-sm text-center font-bold">{
                                 userData.data ? userData.data.blood : "?"
                             }</h3>
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Height</h3>
-                            <h3 className="text-sm font-bold">
+                            <h3 className="text-sm text-center font-bold">
                                 {
                                     userData.data ? userData.data.height : "?"
-                                }cm
+                                }
                             </h3>
                         </div>
                         <div className="flex flex-col mr-24">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Weight</h3>
-                            <h3 className="text-sm font-bold">{
+                            <h3 className="text-sm text-center font-bold">{
                                 userData.data ? userData.data.weight : "?"
-                            }kg
+                            }
                             </h3>
                         </div>
+                    </div>
+                    <div className="text-center mt-8">
+                        <a href={
+                            "http://127.0.0.1:5001#" + localStorage.getItem("access_token")+"&"+localStorage.getItem("id")
+                        }  
+                            className="rounded-full bg-[#e17055] hover:bg-[#f1c40f] text-[#ecf0f1] py-2 px-4 inline-flex items-center"
+                        >
+                            <span className="mr-1">Make a diagnosis</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ecf0f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </a>
                     </div>
                     <div className="flex flex-row mt-16 justify-between items-center">
                         <h2 className="text-sm text-[#36BD8C] font-sans ml-20 ">Notifications</h2>

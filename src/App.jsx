@@ -14,6 +14,7 @@ import Doctor from './pages/doctor';
 import Dashboard from './pages/dashboard';
 import SetAppointment from './pages/setAppointment';
 import Chat from './pages/chat';
+import Map from './pages/map';
 function App() {
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route exact path={RouterConfig.doctor} element={<Doctor />} />
           <Route exact path={RouterConfig.appointment} element={<SetAppointment />} />
           <Route exact path={RouterConfig.chat} element={<Chat />} />
+          <Route exact path={RouterConfig.map} element={<Map />} />
         </Routes>
     </Router>
   );

@@ -182,7 +182,7 @@ function SetAppointment() {
                                         <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                             <img className="w-5 h-5 text-[#36BD8C] " src="./assets/img/clock_icon.svg"></img>
                                         </div>
-                                        <TimePicker className="w-1 border border-[#36BD8C] text-sm rounded-xl w-full h-12 pl-10 p-2.5" placeholder="Select time" onChange={onChange} value={value} />                                   
+                                        <TimePicker className="border border-[#36BD8C] text-sm rounded-xl w-full h-12 pl-10 p-2.5" placeholder="Select time" onChange={onChange} value={value} />                                   
 
                                     </div>
                                 </div>

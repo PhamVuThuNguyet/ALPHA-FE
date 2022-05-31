@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../../components/layouts/sidebar/SideBar";
 import styles from "./message.module.css";
-
 import axiosClient from "../../axiosClient";
 
 function renderMsgBlock(message) {

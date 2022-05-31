@@ -3,10 +3,33 @@ import Calendar from 'react-calendar';
 
 import SideBar from "../../components/layouts/sidebar/SideBar";
 import DatePicker from "react-datepicker";
+import axiosClient from "../../axiosClient";
+
+function getAge(dateString) 
+{
+    const today = new Date();
+    const birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}
+
 function Dashboard() {
-    const [startDate, setStartDate] = useState(new Date());
-    const [value, onChange] = useState('10:00');
-    return (
+    // const [startDate, setStartDate] = useState(new Date());
+    // const [value, onChange] = useState('10:00');
+    const [userData, setUserData] = useState(0);
+    const userId = localStorage.getItem("id");
+
+    axiosClient.get("/user/6290eef7f0dc8c7d02856941")
+        .then(res => {
+            setUserData(res.data);
+        })
+
+    const mainHTML = (
         <div>
             < SideBar />
             <div className="bg-slate-100 h-screen pl-28 flex flex-row overflow-y-auto">
@@ -17,21 +40,30 @@ function Dashboard() {
                         </div>
                         <div className="mt-6 text-center">
                             <h3 className="text-xs font-sans font-bold">Isbella Christ</h3>
-                            <h3 className="text-xs text-[#888C96]">20 years, California</h3>
+                            <h3 className="text-xs text-[#888C96]">{getAge(userData.dateOfBirth)} years, California</h3>
                         </div>
                     </div>
                     <div className="flex flex-row mt-10 justify-between">
                         <div className="flex flex-col ml-24">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Blood</h3>
-                            <h3 className="text-sm font-bold">-B</h3>
+                            <h3 className="text-sm font-bold">{
+                                userData.data ? userData.data.blood : "?"
+                            }</h3>
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Height</h3>
-                            <h3 className="text-sm font-bold">170cm</h3>
+                            <h3 className="text-sm font-bold">
+                                {
+                                    userData.data ? userData.data.height : "?"
+                                }cm
+                            </h3>
                         </div>
                         <div className="flex flex-col mr-24">
                             <h3 className="text-xs text-[#36BD8C] font-sans">Weight</h3>
-                            <h3 className="text-sm font-bold">50kg</h3>
+                            <h3 className="text-sm font-bold">{
+                                userData.data ? userData.data.weight : "?"
+                            }kg
+                            </h3>
                         </div>
                     </div>
                     <div className="flex flex-row mt-16 justify-between items-center">
@@ -134,6 +166,6 @@ function Dashboard() {
             </div>
         </div>
     )
-
+    return mainHTML
 }
 export default Dashboard;

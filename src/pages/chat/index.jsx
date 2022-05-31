@@ -1,109 +1,85 @@
 import React, { useState } from "react";
 import SideBar from "../../components/layouts/sidebar/SideBar";
 import styles from "./message.module.css";
-function Chat(){
-    return(
+
+import axiosClient from "../../axiosClient";
+
+function renderMsgBlock(message) {
+    const userId = localStorage.getItem("id");
+    const enum_msg = Object.keys(message);
+    const html = (
+        enum_msg.map(key =>
+            <li className={message[key].user === userId ? styles["right"] : styles["left"]}>
+                <div className={`${styles["msg"]} ${styles["msg-in"]}`}>
+                    <div className={styles["msg-img"]}>
+                        <div className={styles["contact-img"]}>
+                            <a href="#">
+                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                    <div className={styles["conversation"]}>
+                        <div className={styles["chat-content"]}>
+                            <p className={styles["content"]}>
+                                {
+                                    message[key].message
+                                }
+                            </p>
+                            <p className={styles["time"]}>
+                                {
+                                    (new Date(message[key].created_at)).getDate() + "/" +
+                                    (new Date(message[key].created_at)).getMonth() + " - " +
+                                    (new Date(message[key].created_at)).getHours() + ":" + (new Date(message[key].created_at)).getMinutes()
+                                } <span>○</span>
+                            </p>
+                        </div>
+                        <div className={styles["chat-name"]}>
+                            Patient Phong
+                        </div>
+                    </div>
+                </div>
+            </li>
+        )
+    )
+
+    return html
+}
+
+function HandleSubmit(event) {
+    event.preventDefault();
+
+    const target = event.target;
+    const messageToSend = {
+        conversation: '6292468f24d7122d8e99035b', //id of conversation
+        message: target.sendmsg.value,
+        type: 'text'
+        
+    }
+    // target.msgsend.value = "";
+    axiosClient.post(`/message`, messageToSend)
+        .then(res => {
+            console.log(res);
+            if(res.status === 200) {
+                console.log("message sent");
+            }
+        })
+}
+
+function Chat() {
+
+    const [msg, setMsg] = useState(0);
+
+    axiosClient.get('/message/conversation/6292468f24d7122d8e99035b')
+        .then(res => {
+            setMsg(res.data);
+        })
+    const mainHTML = (
         <div className={styles.messagePage}>
             <div className={styles["msg-container"]}>
                 <div className={styles["chat-panel"]}>
-                    <div className={styles["messages"]}>
+                    <div id="msgBlock" className={styles["messages"]}>
                         <ul>
-                            <li className={styles["left"]}>
-                                <div className={`${styles["msg"]} ${styles["msg-in"]}`}>
-                                    <div className={styles["msg-img"]}>
-                                        <div className={styles["contact-img"]}>
-                                            <a href="#">
-                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className={styles["conversation"]}>
-                                        <div className={styles["chat-content"]}>
-                                            <p className={styles["content"]}>
-                                                Good morning, How are you? What about our next meeting ?
-                                            </p>
-                                            <p className={styles["time"]}>
-                                                10:10 <span>○</span>
-                                            </p>
-                                        </div>
-                                        <div className={styles["chat-name"]}>
-                                            Patient Phong
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className={styles["right"]}>
-                                <div className={`${styles["msg"]} ${styles["msg-out"]}`}>
-                                    <div className={styles["msg-img"]}>
-                                        <div className={styles["contact-img"]}>
-                                            <a href="#">
-                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className={styles["conversation"]}>
-                                        <div className={styles["chat-content"]}>
-                                            <p className={styles["content"]}>
-                                                Yeah everything is fine
-                                            </p>
-                                            <p className={styles["time"]}>
-                                                10:15 <span>○</span>
-                                            </p>
-                                        </div>
-                                        <div className={styles["chat-name"]}>
-                                            Doctor Chung
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className={styles["right"]}>
-                                <div className={`${styles["msg"]} ${styles["msg-out"]}`}>
-                                    <div className={styles["msg-img"]}>
-                                        <div className={styles["contact-img"]}>
-                                            <a href="#">
-                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className={styles["conversation"]}>
-                                        <div className={styles["chat-content"]}>
-                                            <p className={styles["content"]}>
-                                                And Next meeting tomorrow 10.00AM
-                                            </p>
-                                            <p className={styles["time"]}>
-                                                10:16 <span>○</span>
-                                            </p>
-                                        </div>
-                                        <div className={styles["chat-name"]}>
-                                            Doctor Chung
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className={styles["left"]}>
-                                <div className={`${styles["msg"]} ${styles["msg-in"]}`}>
-                                    <div className={styles["msg-img"]}>
-                                        <div className={styles["contact-img"]}>
-                                            <a href="#">
-                                                <img src="https://seedpsychology.com.au/wp-content/uploads/2018/09/Damian-profile-pic-square.jpg" alt="" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className={styles["conversation"]}>
-                                        <div className={styles["chat-content"]}>
-                                            <p className={styles["content"]}>
-                                                Good morning, How are you? What about our next meeting ?
-                                            </p>
-                                            <p className={styles["time"]}>
-                                                10:10 <span>○</span>
-                                            </p>
-                                        </div>
-                                        <div className={styles["chat-name"]}>
-                                            Patient Phong
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            {renderMsgBlock(msg)}
                         </ul>
                     </div>
                 </div>
@@ -148,17 +124,18 @@ function Chat(){
                     </div>
                 </div>
                 <div className={styles["chat-input"]}>
-                    <form action="">
+                    <form onSubmit={HandleSubmit} action="">
                         <div className={styles["input-group"]}>
-                            <input name="" className={styles["msg-input"]} type="text" />
+                            <input name="sendmsg" className={styles["msg-input"]} type="text" />
                         </div>
                         <div className={styles["input-group"]}>
-                            <button onclick="submit">Send</button>
+                            <button type="submit" formMethod="post">Send</button>
                         </div>
                     </form>
                 </div>
             </div>
-    </div>    
+        </div>
     )
+    return mainHTML
 }
 export default Chat;

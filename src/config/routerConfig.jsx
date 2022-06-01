@@ -4,6 +4,7 @@ export const RouterConfig = {
     doctor: "/doctor",
     appointment: "/appointment",
     chat: "/chat",
+    signin: "/signin",
     map: "/map",
     demo: {
         home: "/demo",

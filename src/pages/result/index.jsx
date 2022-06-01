@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideBar from "../../components/layouts/sidebar/SideBar";
 import { RouterConfig } from "../../config/routerConfig";
+import axiosClient from "../../axiosClient";
+
+function rederDiseasePredictBlock(predicts) {
+  const enum_predicts = Object.keys(predicts);
+
+  const html = enum_predicts.map(key =>
+    <div className="relative pt-1 my-16">
+    <div className="flex mb-2 items-center justify-between">
+      <div>
+        <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
+          {
+            predicts[key].title
+          }
+        </span>
+      </div>
+      <div className="text-right">
+        <span className="text-sm font-semibold inline-block text-orange-600">
+          66%
+        </span>
+      </div>
+    </div>
+    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-300">
+      <div style={{width: 66 + '%' }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#36BD8C]"></div>
+    </div>
+  </div>
+    )
+
+  return html
+}
+
 function Result() {
-  return (
+
+  const [diseasePredicts, setPredict] = useState(0);
+
+  axiosClient.get('/diagnosis/user')
+    .then(res => {
+      console.log(res.data);
+      setPredict(res.data);
+    })
+  
+  const mainHTML = (
     <div>
       <div>
         < SideBar />
@@ -12,59 +51,7 @@ function Result() {
         <div className="absolute left-48 top-28 w-1/3 text-left">
           <h2 className="font-sans text-xl text-[#36BD8C]">Your diagnosis</h2>
 
-          <div className="relative pt-1 my-16">
-            <div className="flex mb-2 items-center justify-between">
-              <div>
-                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
-                  Disease 1
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="text-sm font-semibold inline-block text-orange-600">
-                  66%
-                </span>
-              </div>
-            </div>
-            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-300">
-              <div className="w-2/3 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#36BD8C]"></div>
-            </div>
-          </div>
-
-          <div className="relative pt-1 my-16">
-            <div className="flex mb-2 items-center justify-between">
-              <div>
-                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
-                  Disease 1
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="text-sm font-semibold inline-block text-orange-600">
-                  30%
-                </span>
-              </div>
-            </div>
-            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-300">
-              <div className="w-1/3 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#36BD8C]"></div>
-            </div>
-          </div>
-
-          <div className="relative pt-1 my-16">
-            <div className="flex mb-2 items-center justify-between">
-              <div>
-                <span className="text-sm font-semibold inline-block py-1 uppercase rounded-full">
-                  Disease 1
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="text-sm font-semibold inline-block text-orange-600">
-                  15%
-                </span>
-              </div>
-            </div>
-            <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-300">
-              <div className="w-1/6 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#36BD8C]"></div>
-            </div>
-          </div>
+          {rederDiseasePredictBlock(diseasePredicts)}
 
         </div>
         <div className="bg-white w-1/2 h-5/6 absolute right-0 bottom-4 rounded-l-3xl overflow-y-auto">
@@ -243,9 +230,10 @@ function Result() {
         </Link>
         </div>
       </div>
-
     </div>
   );
+
+  return mainHTML;
 }
 
 export default Result;

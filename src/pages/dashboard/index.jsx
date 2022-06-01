@@ -2,20 +2,81 @@ import React, { useState } from "react";
 import Calendar from 'react-calendar';
 
 import SideBar from "../../components/layouts/sidebar/SideBar";
-import DatePicker from "react-datepicker";
 import axiosClient from "../../axiosClient";
 
-function getAge(dateString) 
-{
+function getAge(dateString) {
     const today = new Date();
     const birthDate = new Date(dateString);
     var age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
-    {
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
     return age;
+}
+
+function formatAMPM(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    const strTime = hours + ':' + minutes + ' ' + ampm;
+    return strTime;
+}
+
+function renderAppointmentBlock(appointments) {
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const enum_treatment = Object.keys(appointments);
+
+    const html = enum_treatment.map(key =>
+        <div className=" bg-white rounded-3xl h-64 w-2/3 gap-2 mb-10 ml-20 mt-12">
+            <div className="flex flex-row">
+                <div className="ml-4 w-10 mt-5">
+                    <img className="" alt="" src={appointments[key].doctor.avatar} />
+                </div>
+                <div className="mt-6 text-left mx-5">
+                    <h3 className="text-xs font-sans">
+                        {
+                            appointments[key].doctor.firstName + " " + appointments[key].doctor.lastName
+                        }
+                    </h3>
+                    <h3 className="text-xs text-[#888C96]">{
+                        appointments[key].doctor.workplace.address
+                    }</h3>
+                </div>
+            </div>
+            <div className="mx-5 mt-5">
+                <h3 className="text-sm font-sans font-bold">
+                    {
+                        appointments[key].doctor.major.title
+                    }
+                </h3>
+                <h3 className="text-xs text-[#888C96]">Spinal pain</h3>
+            </div>
+            <div className="flex flex-row justify-between">
+                <div className="flex flex-col mx-5 mt-5">
+                    <h3 className="text-xs text-[#36BD8C] font-sans">Date</h3>
+                    <h3 className="text-sm font-sans">
+                        {
+                            (new Date(appointments[key].appointmentAt).getDate() + " " + monthNames[new Date(appointments[key].appointmentAt).getMonth()] + " " + new Date(appointments[key].appointmentAt).getFullYear())
+                        }
+                    </h3>
+                </div>
+                <div className="flex flex-col mx-10 mt-5">
+                    <h3 className="text-xs text-[#36BD8C] font-sans">Time</h3>
+                    <h3 className="text-sm font-sans">
+                        {
+                            formatAMPM(new Date(appointments[key].appointmentAt))
+                        }
+                    </h3>
+                </div>
+            </div>
+        </div>
+    )
+
+    return html
 }
 
 function Dashboard() {
@@ -23,11 +84,17 @@ function Dashboard() {
     // const [value, onChange] = useState('10:00');
     const [userData, setUserData] = useState(0);
     const userId = localStorage.getItem("id");
+    const [appointments, setAppointments] = useState(0);
 
-    axiosClient.get("/user/6290eef7f0dc8c7d02856941")
+    axiosClient.get(`/user/6290eef7f0dc8c7d02856941`)
         .then(res => {
             setUserData(res.data);
         })
+
+    axiosClient.get("/appointment/user/6290eef7f0dc8c7d02856941")
+        .then(res => {
+            setAppointments(res.data)
+        });
 
     const mainHTML = (
         <div>
@@ -72,8 +139,8 @@ function Dashboard() {
                     </div>
                     <div className="text-center mt-8">
                         <a href={
-                            "http://127.0.0.1:5001#" + localStorage.getItem("access_token")+"&"+localStorage.getItem("id")
-                        }  
+                            "http://127.0.0.1:5001#" + localStorage.getItem("access_token") + "&" + localStorage.getItem("id")
+                        }
                             className="rounded-full bg-[#e17055] hover:bg-[#f1c40f] text-[#ecf0f1] py-2 px-4 inline-flex items-center"
                         >
                             <span className="mr-1">Make a diagnosis</span>
@@ -98,31 +165,7 @@ function Dashboard() {
                         </div>
                         <h3 className="text-xs text-[#888C96] font-sans mt-3">2 times in a day before food</h3>
                     </div>
-                    <div className=" bg-white rounded-3xl h-64 w-2/3 gap-2 mb-10 ml-20 mt-12">
-                        <div className="flex flex-row">
-                            <div className="ml-4 w-10 mt-5">
-                                <img className="" alt="" src="./assets/img/photo.png" />
-                            </div>
-                            <div className="mt-6 text-left mx-5">
-                                <h3 className="text-xs font-sans">Dr. Isbella</h3>
-                                <h3 className="text-xs text-[#888C96]">California Hospital Medical Center</h3>
-                            </div>
-                        </div>
-                        <div className="mx-5 mt-5">
-                            <h3 className="text-sm font-sans font-bold">Surgeon</h3>
-                            <h3 className="text-xs text-[#888C96]">Spinal pain</h3>
-                        </div>
-                        <div className="flex flex-row justify-between">
-                            <div className="flex flex-col mx-5 mt-5">
-                                <h3 className="text-xs text-[#36BD8C] font-sans">Date</h3>
-                                <h3 className="text-sm font-sans">26 Aug 2019</h3>
-                            </div>
-                            <div className="flex flex-col mx-10 mt-5">
-                                <h3 className="text-xs text-[#36BD8C] font-sans">Time</h3>
-                                <h3 className="text-sm font-sans">12:45 AM</h3>
-                            </div>
-                        </div>
-                    </div>
+                        {renderAppointmentBlock(appointments)}
                 </div>
                 <div className="w-2/3 gap-2 mb-10">
                     <div className="flex flex-row items-center justify-between">
@@ -174,8 +217,8 @@ function Dashboard() {
                             </button> */}
                             <Calendar />
                         </div>
-                        
-                    </div>  
+
+                    </div>
                 </div>
             </div>
         </div>

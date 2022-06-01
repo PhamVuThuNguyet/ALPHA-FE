@@ -91,7 +91,7 @@ function Dashboard() {
             setUserData(res.data);
         })
 
-    axiosClient.get("/appointment/user/6290eef7f0dc8c7d02856941")
+    axiosClient.get("/appointment/user/userId")
         .then(res => {
             setAppointments(res.data)
         });

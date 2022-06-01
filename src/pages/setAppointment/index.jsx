@@ -34,6 +34,7 @@ const handleSubmit = event => {
         if(res.status === 200) {
             console.log(res.data)
             alert("Appointment created!");
+            window.location = "/dashboard"
         }
     })
 }

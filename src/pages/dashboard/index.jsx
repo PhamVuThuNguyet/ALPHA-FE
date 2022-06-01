@@ -53,7 +53,7 @@ function renderAppointmentBlock(appointments) {
                         appointments[key].doctor.major.title
                     }
                 </h3>
-                <h3 className="text-xs text-[#888C96]">Spinal pain</h3>
+                <h3 className="text-xs text-[#888C96]">Biology</h3>
             </div>
             <div className="flex flex-row justify-between">
                 <div className="flex flex-col mx-5 mt-5">
@@ -91,7 +91,7 @@ function Dashboard() {
             setUserData(res.data);
         })
 
-    axiosClient.get("/appointment/user/userId")
+    axiosClient.get("/appointment/user/" + userId)
         .then(res => {
             setAppointments(res.data)
         });
@@ -211,10 +211,6 @@ function Dashboard() {
                     <div className="flex flex-col">
                         <h2 className="text-xl text-[#36BD8C] font-sans ml-20 mt-20">Nearest Treatment</h2>
                         <div className="flex flex-row ml-20 mt-10">
-                            {/* <h3 className="text-sm font-sans font-bold">January 2022</h3>
-                            <button className="ml-5">
-                                <img src="./assets/img/selectDate_button.svg" />
-                            </button> */}
                             <Calendar />
                         </div>
 

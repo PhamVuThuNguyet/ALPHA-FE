@@ -121,7 +121,7 @@ function Doctor() {
             setDoctors(res.data);
         })
     
-    axiosClient.get("/appointment/user/6290eef7f0dc8c7d02856941") // change to userId
+    axiosClient.get("/treatment/user/6290eef7f0dc8c7d02856941") // change to userId
         .then(res => {
             setTreatment(res.data);
             console.log(renderTreatmentBlock(res.data));

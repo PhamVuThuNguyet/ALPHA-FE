@@ -5,6 +5,7 @@ export const RouterConfig = {
     appointment: "/appointment",
     chat: "/chat",
     signin: "/signin",
+    map: "/map",
     demo: {
         home: "/demo",
         autosugest: {

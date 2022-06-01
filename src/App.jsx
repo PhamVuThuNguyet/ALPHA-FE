@@ -17,6 +17,7 @@ import Dashboard from './pages/dashboard';
 import SetAppointment from './pages/setAppointment';
 import Chat from './pages/chat';
 import SignIn from './pages/auth/signin/SignIn';
+import Map from './pages/map';
 function App() {
   return (
 
@@ -28,6 +29,7 @@ function App() {
           <Route exact path={RouterConfig.chat} element={<Chat />} />
           <Route exact path={RouterConfig.appointment} element={<SetAppointment />} />
           <Route exact path={RouterConfig.signin} element={<SignIn />} />
+          <Route exact path={RouterConfig.map} element={<Map />} />
         </Routes>
     </Router>
 

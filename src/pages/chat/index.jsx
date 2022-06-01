@@ -32,9 +32,14 @@ function renderMsgBlock(message) {
                                 } <span>○</span>
                             </p>
                         </div>
-                        <div className={styles["chat-name"]}>
-                            Patient Phong
-                        </div>
+                            {
+                                message[key].user === userId ? <div style={{color: "#2ecc71", textAlign: "right"}}className={styles["chat-name"]}>
+                                    Doctor Chung
+                                </div> : <div className={styles["chat-name"]}>
+                                    Patient Phong
+                                </div>
+                            }
+                        
                     </div>
                 </div>
             </li>

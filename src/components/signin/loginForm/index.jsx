@@ -25,6 +25,8 @@ function handleSubmit(event) {
           console.log(`access token: ${localStorage.getItem('access_token')} \n
                       refresh token: ${localStorage.getItem('refresh_token')} \n
                       id: ${localStorage.getItem('id')}`);
+          window.location = "/dashboard"
+          
         }
       })
 }
@@ -57,7 +59,7 @@ function SignInForm() {
             <button className="px-6 py-2 mt-5 w-96 text-lg text-white bg-[#36BD8C] rounded-2xl hover:bg-[#6cb198]" type="submit" formMethod="post">Login</button>
             <div className="flex justify-center gap-2 pt-5">
               <h4 className="text-sm font-sans">Don't have an account?</h4>
-              <a href="#" className="text-sm text-[#089BAB] hover:underline no-underline">Sign Up</a>
+              <a href="/signup" className="text-sm text-[#089BAB] hover:underline no-underline">Sign Up</a>
             </div>
           </form>
         </div>

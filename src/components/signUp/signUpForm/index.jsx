@@ -60,7 +60,7 @@ function SignUpForm() {
             <button className="px-6 py-2 mt-24 w-96 text-lg text-white bg-[#36BD8C] rounded-2xl hover:bg-[#6cb198]" type="submit" formMethod="post">Continue</button>
             <div className="flex justify-center gap-2 pt-5">
               <h4 className="text-sm font-sans">Already have an account?</h4>
-              <a href="#" className="text-sm text-[#089BAB] hover:underline no-underline">Log In</a>
+              <a href="/signin" className="text-sm text-[#089BAB] hover:underline no-underline">Log In</a>
             </div>
           </form>
         </div>

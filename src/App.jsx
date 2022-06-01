@@ -5,9 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import SideBar from './components/layouts/sidebar/SideBar';
 import SignUp from './pages/auth/signUp/SignUp';
-import SignUpForm from './pages/auth/signUp/SignUp'
 
 import Result from './pages/result'
 import { RouterConfig } from './config/routerConfig';
@@ -30,6 +28,7 @@ function App() {
           <Route exact path={RouterConfig.appointment} element={<SetAppointment />} />
           <Route exact path={RouterConfig.signin} element={<SignIn />} />
           <Route exact path={RouterConfig.map} element={<Map />} />
+          <Route exact path={RouterConfig.signup} element={<SignUp />} />
         </Routes>
     </Router>
 

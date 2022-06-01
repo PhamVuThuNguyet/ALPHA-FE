@@ -172,7 +172,7 @@ function SetAppointment() {
                                         id="date"
                                         name="date"
                                         wrapperClassName="datePicker"
-                                        className="bg-gray-50 border border-[#36BD8C] text-white sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" selected={startDate} onChange={(date: Date) => setStartDate(date)} />                                    
+                                        className="bg-gray-50 border border-[#36BD8C] text-black sm:text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date" selected={startDate} onChange={(date: Date) => setStartDate(date)} />                                    
                                     </div>
                                 </div>
 
